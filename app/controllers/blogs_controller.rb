@@ -13,6 +13,7 @@ class BlogsController < ApplicationController
 
       def create
         @blog = Blog.new(blog_params)
+        @blog.user_id = current_user.id
         if @blog.save
            flash[:notice] = "成功！"
            redirect_to("/blogs/#{@blog.id}")

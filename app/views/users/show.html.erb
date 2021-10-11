@@ -1,2 +1,6 @@
 <h2>ユーザーの詳細ページ</h2>
 <%= @user.name %>
+<hr>
+<% @blogs.each do |blog| %>
+  <%= link_to(blog.title, "/blogs/#{blog.id}") %>
+<% end %>
