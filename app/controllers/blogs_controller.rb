@@ -4,7 +4,8 @@ class BlogsController < ApplicationController
 
 
     def index
-        @test = "ALL BLOGS"
+        @test = "ブログ一覧"
+        @blog = Blog.all
       end
 
       def show

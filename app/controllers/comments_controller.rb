@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 
         if @comment.save
           flash[:notice] = "成功！"
-          redirect_to("/blogs/#{params[blog_id]}")
+          redirect_to("/blogs/#{params[:blog_id]}")
         else
             @blog = Blog.find(params[:blog_id])
           flash.now[:alert] = "失敗！"

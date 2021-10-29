@@ -1,0 +1,10 @@
+<h1>ユーザーリスト</h1>
+
+<hr>
+<div>
+<li>
+  <% @users.each do |user| %>
+ <p>  <%= link_to(user.name, "/users/#{user.id}") %></p>
+  <% end %>
+</li>
+</div>

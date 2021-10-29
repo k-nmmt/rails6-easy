@@ -1,6 +1,11 @@
-<h2>ユーザーの詳細ページ</h2>
-<%= @user.name %>
+<h3>ユーザーの詳細</h3>
+<h2><%= @user.name %></h2>
+登録日時：<%= @user.created_at%>
+
 <hr>
+<h3>投稿一覧</h3>
+<li>
 <% @blogs.each do |blog| %>
-  <%= link_to(blog.title, "/blogs/#{blog.id}") %>
+  <p><%= link_to(blog.title, "/blogs/#{blog.id}") %></p>
 <% end %>
+</li>

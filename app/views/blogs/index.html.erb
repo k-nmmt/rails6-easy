@@ -1,1 +1,9 @@
-<%= @test %>
+<h1><%= @test %></h1>
+<hr>
+<div>
+<% @blog.each do |blog| %>
+<p><%= link_to(blog.title, "/blogs/#{blog.id}")%>
+<div class="info">(投稿者:<%= blog.user.name %> /<%= blog.created_at %>)</div></p>
+<hr>
+<% end %>
+</div>

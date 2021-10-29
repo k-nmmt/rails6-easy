@@ -1,21 +1,34 @@
-<p><%= @blog.title %></p>
+<h3>タイトル</h3>
+<h1><%= @blog.title %></h1>
+<hr>
+本文
 <p><%= @blog.body %></p>
+
+<% if user_signed_in? %>
 <% if @blog.user_id == current_user.id %>
 <%= link_to("編集", "/blogs/#{@blog.id}/edit") %>
 <%= link_to("削除", "/blogs/#{@blog.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
 <% end %>
+<% end %>
+<br>
+<hr>
+<br>
+<h4>コメント一覧</h4>
+
+<div>
+  <% @blog.comments.each do |comment| %><p><%= comment.body%><div class="info">(name: <%= comment.user.name %> /<%= comment.created_at %>)</div></p><hr>
+  <% end %>
+</div>
+
+<% if user_signed_in? %>
+
 <div>
   <%= form_with(model: [@blog, @comment], local: true) do |f| %>
     <div>
       <%= f.label :body, "コメント" %><br>
       <%= f.text_area :body %>
     </div>
-    <%= f.submit %>
+    <%= f.submit "コメント送信"%>
   <% end %>
 </div>
-<hr>
-<div>
-  <% @blog.comments.each do |comment| %>
-    <p><%= comment.body %></p>
-  <% end %>
-</div>
+<% end %>
